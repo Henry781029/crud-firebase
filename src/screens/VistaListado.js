@@ -10,6 +10,12 @@ export default function VistaListado(){
     const navegar = useNavigation();
     const [producto, setProducto] = React.useState([]);
 
+    React.useLayoutEffect(()=>{
+        navegar.setOptions({
+            headerRight: () => <RN.Button title='Agregar' onPress={()=>navegar.navigate('CREAR ARTICULO')}/>
+        })
+    }, [])
+
     React.useEffect(()=>{
         const collectionRef = collection(database, 'Productos');
         const q = query(collectionRef, orderBy('fechaCreacion', 'desc'));
@@ -36,7 +42,7 @@ export default function VistaListado(){
             Productos
         </RN.Text>
         {producto.map(producto => <Productos key={producto.id}{...producto}/>)}
-        <RN.Button title='atras' onPress={()=>navegar.navigate('CREAR ARTICULO')}/>
+        {/*<RN.Button title='atras' onPress={()=>navegar.navigate('CREAR ARTICULO')}/>*/}
         </>
     );
 };
