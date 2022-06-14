@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { getfirestore } from 'firebase/firestore';
+import { getFirestore} from 'firebase/firestore';
 import  Constants  from "expo-constants";
 
 const firebaseConfig = {
@@ -15,4 +15,4 @@ const firebaseConfig = {
 // Initialize Firebase
 initializeApp(firebaseConfig);
 
-export const database = getfirestore();
+export const database = getFirestore();

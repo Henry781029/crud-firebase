@@ -2,9 +2,13 @@ import * as React from "react";
 import react from "react";
 import * as RN from 'react-native';
 import EmojiPicker from "rn-emoji-keyboard";
+import { database } from '../config/fb';
+import { collection, addDoc } from "firebase/firestore";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Agregar(){
 
+    const navegaador = useNavigation();
     const [isOpen, setIsOpen ] = react.useState(false);
     const [NuevoItem, setNuevoItem] = react.useState({
         img: '🐎',
@@ -13,6 +17,11 @@ export default function Agregar(){
         enVenta: ' ',
         fechaCreacion: new Date(),
     });
+
+    const onSend = async () => {
+        await addDoc(collection(database, 'Productos'), NuevoItem)
+        navegaador.goBack();
+    }
 
     const handlePick = (emojiObject)=>{
         setNuevoItem ({
@@ -45,7 +54,7 @@ export default function Agregar(){
                 style = {estilo.container}
                 keyboardType="number-pad"
             />
-            {/*<RN.Button title="Ingresar bd" onPress={(onSend)} />*/}
+            <RN.Button title="Ingresar bd" onPress={(onSend)} />
         </RN.View>    
     );
 };
