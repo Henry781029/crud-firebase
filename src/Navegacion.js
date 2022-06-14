@@ -16,6 +16,7 @@ function MisPantallas(){
             <Pantallas.Screen
                 name='CREAR ARTICULO'
                 component={Agregar}
+                options={{presentation: 'modal'}}
             />
         </Pantallas.Navigator>
     );
