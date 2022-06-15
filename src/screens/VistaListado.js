@@ -38,7 +38,7 @@ export default function VistaListado(){
 
     return(
         <>
-        <RN.Text>
+        <RN.Text style={estilo.titulo}>
             Productos
         </RN.Text>
         {producto.map(producto => <Productos key={producto.id}{...producto}/>)}
@@ -46,3 +46,11 @@ export default function VistaListado(){
         </>
     );
 };
+
+const estilo = RN.StyleSheet.create ({
+    titulo:{
+        fontSize: 30,
+        color: "blue",
+        fontWeight: "bold"
+    }
+})
